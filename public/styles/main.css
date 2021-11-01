@@ -1,0 +1,17 @@
+body{background: rgb(234,157,251) !important;
+    background: linear-gradient(90deg, rgba(234,157,251,1) 0%, rgba(175,171,255,1) 50%, rgba(168,61,255,0.927608543417367) 100%) !important;
+}
+.containerbeta{
+background-color: aliceblue;
+color: black;
+border-radius: 5px;
+margin-top: 100px;
+padding: 20px;
+max-width: 565px;
+}
+.pad{
+    padding-top:20px;
+}
+.radius{
+    border-radius:5px;
+}

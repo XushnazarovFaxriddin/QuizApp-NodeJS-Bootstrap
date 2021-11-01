@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Boottstarp-5.1.0 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles/main.css">
+    <title>QuizApp</title>
+</head>
+<body>
+  <div class="pages" style="width: 90%; text-align: center; margin: auto;" id="pagesid">
+    <div class="container-sm containerbeta d-flex justify-content-center flex-column">
+          <h1>Kirish</h1>
+          <i style="color: red; display: none;" id="xato"><%= xato %></i>
+        <div class="btn-group radius" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" onclick="user()" class="btn-check" name="btnradio" id="userbtn" autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="userbtn">User</label>
+            <input type="radio" onclick="admin()" class="btn-check" name="btnradio" id="adminbtn" autocomplete="off">
+            <label class="btn btn-outline-primary" for="adminbtn">Admin</label>
+          </div>
+          
+          <div id="btnReplace"><form action="/quiz" method="post"><div class="form-group row pad">
+            <div class="col">
+              <input type="text" name="nomi" class="form-control form-control" id="colFormLabelLg" placeholder="Ismingiz?">
+            </div>
+          </div>
+          <div class="form-group row pad">
+            <div class="col">
+                <input type="text" name="familyasi" class="form-control form-control" id="colFormLabelLg" placeholder="Familyangiz?">
+            </div>
+          </div>
+          <div class="d-grid gap-2 pad">
+            <button class="btn btn-primary" class="btn btn-primary">Boshlash</button>
+          </div></form>
+        </div>
+    </div>
+  </div>
+    <script src="bootstrap/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <script>
+      window.addEventListener('DOMContentLoaded', (event) => {
+        let xato=document.getElementById("xato").innerText;
+      if(xato.length>0){
+        alert(xato);
+      }
+      else
+        console.log(xato);
+      });
+    </script>
+    <script>
+      function user(){
+      document.getElementById("btnReplace").innerHTML =`<form action="/quiz" method="post"><div class="form-group row pad">
+            <div class="col">
+              <input type="text" name="nomi" class="form-control form-control" id="colFormLabelLg" placeholder="Ismingiz?">
+            </div>
+          </div>
+          <div class="form-group row pad">
+            <div class="col">
+                <input type="text" name="familyasi" class="form-control form-control" id="colFormLabelLg" placeholder="Familyangiz?">
+            </div>
+          </div>
+          <div class="d-grid gap-2 pad">
+            <button class="btn btn-primary" class="btn btn-primary">Boshlash</button>
+          </div></form>`;
+      }
+      function admin(){
+      document.getElementById("btnReplace").innerHTML =` <form action="/sign/in" method="post"><div class="form-group row pad">
+            <div class="col">
+              <input name="login" type="text" class="form-control form-control" id="colFormLabelLg" placeholder="Login">
+            </div>
+          </div>
+          <div class="form-group row pad">
+            <div class="col">
+                <input name="parol" type="password" class="form-control form-control" id="colFormLabelLg" placeholder="Parol">
+            </div>
+          </div>
+          <div class="d-grid gap-2 pad">
+            <button class="btn btn-primary" class="btn btn-primary" >Kirish</button>
+          </div></form>`;
+      }
+    </script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .cn {
+            background-color: darkorchid;
+            color: white;
+            margin-top: 50px;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .loader4 {
+            width: 75px;
+            height: 75px;
+            display: inline-block;
+            padding: 0px;
+            border-radius: 100%;
+            border: 8px solid;
+            border-top-color: rgba(246, 36, 89, 1);
+            border-bottom-color: rgba(255, 255, 255, 0.3);
+            border-left-color: rgba(246, 36, 89, 1);
+            border-right-color: rgba(255, 255, 255, 0.3);
+            -webkit-animation: loader4 1s ease-in-out infinite;
+            animation: loader4 1s ease-in-out infinite;
+        }
+
+        @keyframes loader4 {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes loader4 {
+            from {
+                -webkit-transform: rotate(0deg);
+            }
+
+            to {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        #loader {
+            display: none;
+        }
+    </style>
+    <title>Add Test</title>
+</head>
+
+<body onbeforeunload="myFunction()">
+    <div id="loader"
+        style="background-color: rgba(0, 225, 255, 0.5); backdrop-filter: blur(10px); height:90%;width:90%;margin:auto 5%; border: 3px solid; border-color: rgb(255, 255, 255); border-radius: 10px; z-index: 11111;"
+        class="position-fixed top-0 left-0 right-0 bottom-0  flex-column justify-content-center align-items-center">
+        <div class="loader4"></div>
+        <div id="sahifa" class="col-sm-6 text-center">
+            <h2 class="text-white">Qo'shildi</h2>
+        </div>
+    </div>
+    <div style="width:90%" id="boshSahifa" class="container red-container alert-info">
+        <h2>Test yaratish: <b id="n1" class="alert-success" style="border-radius: 5px;">
+                <g id="savolsoni">1</g>/∞
+            </b> </h2>
+        <div class="alert alert-secondary" id="savolClass" role="alert" onclick="inputLength()">
+            <b>
+                <g id="savolsoni1">1</g>
+            </b>-Savolni kiriting!</b>
+            <div class="form-floating mb-3" onclick="inputLength()">
+                <textarea type="text" rows="4" onclick="inputLength()" max-rows="8" class="form-control h-auto"
+                    id="savol" placeholder="Savol?"></textarea>
+                <label for="savol">Savol?</label>
+            </div>
+            <b style="color: red;" id="javobniBelgila">Javoblarni kiriting va to'gri javobni belgilang! Aks holda
+                to'g'ri javob sifatida "A)" javob olib ketiladi!</b>
+            <div class="form-check" onclick="inputLength()">
+                <div class="form-floating mb-3" onclick="inputLength()">
+                    <input class="form-check-input" type="radio" onclick="tanlash()" name="radio" value="ra" checked>
+                    <input type="name" onclick="inputLength()" class="form-control" id="A" placeholder="A)">
+                    <label for="A">A)</label>
+                </div>
+                <div class="form-floating mb-3" onclick="inputLength()">
+                    <input class="form-check-input" type="radio" onclick="tanlash()" name="radio" value="rb">
+                    <input type="name" onclick="inputLength()" class="form-control" id="B" placeholder="B)">
+                    <label for="B">B)</label>
+                </div>
+                <div class="form-floating mb-3" onclick="inputLength()">
+                    <input class="form-check-input" type="radio" onclick="tanlash()" name="radio" value="rc">
+                    <input type="name" onclick="inputLength()" class="form-control" id="C" placeholder="C)">
+                    <label for="C">C)</label>
+                </div>
+                <div class="form-floating mb-3" onclick="inputLength()">
+                    <input class="form-check-input" type="radio" onclick="tanlash()" name="radio" value="rd">
+                    <input type="name" onclick="inputLength()" class="form-control" id="D" placeholder="D)">
+                    <label for="D">D)</label>
+                </div>
+            </div>
+        </div>
+        <div id="keyingiBtn" class="d-flex w-100 justify-content-between">
+            <div class="d-grid gap-2 d-md-block">
+                <button class="btn btn-danger" id="tugatishBtn" onclick="tugatish()" disabled='true'
+                    type="button">Tugatish</button>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn btn-success me-md-2" id="qushishBtn" disabled='true' onclick="qoshish()"
+                    type="button">Qo'shish</button>
+            </div>
+        </div>
+        <i id="qBtnTF" style="display: flex;"
+            class="text-danger text-center w-100 d-flex justify-content-center">Keyingi testni yaratish yoki testni
+            tugatish uchun barcha
+            maydonlarni to'ldiring!</i>
+    </div>
+
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+    <script>
+        setTimeout(()=>{
+            inputLength();
+        },500);
+        let savollar = '';
+        let k = 0, savolsoni = 1;
+        function savolqosh() {
+            savolsoni++;
+            document.querySelector('#savolsoni').innerText = `${savolsoni}`;
+            document.querySelector('#savolsoni1').innerText = `${savolsoni}`;
+            document.querySelector('#loader').style.display = "flex "
+            k++;
+            let S = document.getElementById('savol').value;
+            let A = document.getElementById('A').value;
+            let B = document.getElementById('B').value;
+            let C = document.getElementById('C').value;
+            let D = document.getElementById('D').value;
+            let javob = A;
+            switch (document.querySelector('input[name=radio]:checked').value) {
+                case 'ra': javob = A; break;
+                case 'rb': javob = B; break;
+                case 'rc': javob = C; break;
+                case 'rd': javob = D; break;
+                default: javob = A; break;
+            }
+            let test = `{
+    numb: ${k},
+    question: "${S}",
+    answer: "${javob}",
+    options: [
+      "${A}",
+      "${B}",
+      "${C}",
+      "${D}",
+    ]
+  },`;
+            savollar += test;
+            console.log(savollar);
+        }
+        function qoshish() {
+            savolqosh();
+            // maydonlardagi kiritilgam textlarni tozalash
+            document.getElementById('savol').value = '';
+            document.getElementById('A').value = '';
+            document.getElementById('B').value = '';
+            document.getElementById('C').value = '';
+            document.getElementById('D').value = '';
+            document.getElementById('qushishBtn').disabled = true;
+            document.getElementById("qBtnTF").style.display = 'flex';
+            // loader
+            setTimeout(() => {
+                document.querySelector('#loader').style.display = "none ";
+            }, 1000)
+        }
+        function tugatish() {
+            savolqosh();
+            if (confirm('Testlaringizni yakunlashga ishonchingiz komilmi?')) {
+                document.getElementById('boshSahifa').innerHTML = `Test yaratish jarayoni yakunlandi...`;
+                document.getElementById("loader").innerHTML = `<div style="width:90%" class="d-grid gap-2">
+                <div class="alert alert-warning" role="alert"><h3>
+  Testlaringiz bazaga saqlandi!</h3>
+</div>
+<a href="/" type="button" class="btn btn-danger">Bosh sahifa</a>
+</div>`;
+            } else {
+                document.querySelector('#loader').style.display = "none ";
+                console.log('unda bosmang edi ... #hazil');
+            }
+            // alert("Testlaringiz bazaga saqlandi!")
+
+            console.log('Tugadi ...')
+        }
+        function inputLength() {
+            let S = document.getElementById('savol').value;
+            let A = document.getElementById('A').value;
+            let B = document.getElementById('B').value;
+            let C = document.getElementById('C').value;
+            let D = document.getElementById('D').value;
+            if (S.length > 1 && A.length > 0 && B.length > 0 && C.length > 0 && D.length > 0) {
+                document.getElementById("qushishBtn").disabled = false;
+                document.getElementById("tugatishBtn").disabled = false;
+                document.getElementById("qBtnTF").style.display = 'none';
+            }
+            else {
+                document.getElementById("qushishBtn").disabled = true;
+                document.getElementById("tugatishBtn").disabled = true;
+
+                document.getElementById("qBtnTF").style.display = 'flex';
+            }
+        }
+        function tanlash() {
+            let javob = '';
+            let color = 'green';
+            switch (document.querySelector('input[name=radio]:checked').value) {
+                case 'ra': javob = "A"; break;
+                case 'rb': javob = "B"; break;
+                case 'rc': javob = "C"; break;
+                case 'rd': javob = "D"; break;
+                default: javob = "Xato"; color = 'red'; break;
+            }
+            document.getElementById("javobniBelgila").innerHTML = `<b style="color: ${color};">Siz to'g'ri javob sifatida "${javob}" javobni belgiladingiz!</b>`;
+        }
+    </script>
+    <!-- <script>
+            let arr = [];
+            let javob = document.querySelector('input[name=radio]:checked').value;
+            let a = ``;
+        </script> -->
+    <script>
+        function myFunction() {
+            return "Sahifani yopsangiz test yaratilmaydi!";
+        }
+    </script>
+</body>
+
+</html>
